@@ -248,5 +248,3 @@ class superhero():
         
         self.cursor.execute(insert_with_param,(vals))
         self.conn.commit()
-
-superhero()
