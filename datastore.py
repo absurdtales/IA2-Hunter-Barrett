@@ -183,7 +183,7 @@ class superhero():
         in a single string
         """
         self.cursor.execute("""
-                            SELECT name
+                            SELECT alias_name
                             FROM Alias
                             WHERE super_id = :superh_id
                             """,
