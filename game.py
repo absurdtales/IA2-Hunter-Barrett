@@ -1,4 +1,9 @@
 class Card():
+    
+    '''
+    This is the class for each super hero card
+    '''
+    
     def __init__(self,vals):
         '''
         Recieves a list and creates a card for each of the elements
@@ -33,7 +38,9 @@ class Card():
         else:
             self.combat = vals[6]
         self.image = vals[7]
-        self.alias = vals[8]
+        self.publisher = vals[8]
+        self.alignment = vals[9]
+        self.alias = vals[10]
 
         # values of stats ratings
         self.intel_rating = None

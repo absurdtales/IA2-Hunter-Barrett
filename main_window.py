@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtTest import QTest
 from ui_smuc import Ui_MainWindow
-from datastore import superhero
+from datastore import SuperheroDB
 from game import Card
 import random
 
@@ -19,7 +19,7 @@ class MainWindow:
         self.ui.setupUi(self.main_win)
         
         # create database
-        self.shdb = superhero()
+        self.shdb = SuperheroDB()
         
         # establish all possible cards
         self.deck = self.establish_poss_cards()
