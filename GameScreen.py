@@ -2,7 +2,8 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtTest import QTest
-from ui_smuc import Ui_MainWindow
+from ui_reworkedGame import Ui_MainWindow
+import ui_MainMenu
 from datastore import SuperheroDB
 from game import Card
 import random
@@ -108,24 +109,23 @@ class MainWindow:
         """
         if self.reveal:
             self.ui.ai_name_lb.setText(card.name)
-            self.ui.ai_intel_lb.setText(str(card.intel))
-            self.ui.ai_str_lb.setText(str(card.strength))
-            self.ui.ai_spd_lb.setText(str(card.speed))
-            self.ui.ai_dura_lb.setText(str(card.durability))
-            self.ui.ai_pwr_lb.setText(str(card.power))
-            self.ui.ai_combat_lb.setText(str(card.combat))
+            self.ui.ai_intel_lb_2.setText(str(card.intel))
+            self.ui.ai_str_lb_2.setText(str(card.strength))
+            self.ui.ai_spd_lb_2.setText(str(card.speed))
+            self.ui.ai_dura_lb_2.setText(str(card.durability))
+            self.ui.ai_pwr_lb_2.setText(str(card.power))
+            self.ui.ai_combat_lb_2.setText(str(card.combat))
             ai_img = QPixmap(card.image).scaledToHeight(320)
             self.ui.ai_img_lb.setPixmap(ai_img)
         else:
             self.ui.ai_name_lb.setText("???")
-            self.ui.ai_intel_lb.setText("???")
-            self.ui.ai_str_lb.setText("???")
-            self.ui.ai_spd_lb.setText("???")
-            self.ui.ai_dura_lb.setText("???")
-            self.ui.ai_pwr_lb.setText("???")
-            self.ui.ai_combat_lb.setText("???")
-            ai_img = QPixmap("./images/back.png").scaledToHeight(320)
-            self.ui.ai_img_lb.setPixmap(ai_img)
+            self.ui.ai_intel_lb_2.setText("???")
+            self.ui.ai_str_lb_2.setText("???")
+            self.ui.ai_spd_lb_2.setText("???")
+            self.ui.ai_dura_lb_2.setText("???")
+            self.ui.ai_pwr_lb_2.setText("???")
+            self.ui.ai_combat_lb_2.setText("???")
+            
 
 
     def update_display(self):
@@ -137,9 +137,6 @@ class MainWindow:
         self.display_ai_card(self.ai_hand[0])
         
         # update deck numbers
-        self.ui.player_hand_lb.setText(str(len(self.player_hand)))
-        self.ui.ai_hand_lb.setText(str(len(self.ai_hand)))
-        self.ui.kitty_lb.setText(str(len(self.kitty)))
             
     
     def compare_stat(self, player, ai):
@@ -216,22 +213,22 @@ class MainWindow:
         # compare to selected stat on both cards
         match stat:
             case "intel":
-                self.ui.stat_lb.setText("Intelligence")
+                
                 result = self.compare_stat(player_card.intel, ai_card.intel)
             case "strength":
-                self.ui.stat_lb.setText("Strength")
+                
                 result = self.compare_stat(player_card.strength, ai_card.strength)
             case "speed":
-                self.ui.stat_lb.setText("Speed")
+                
                 result = self.compare_stat(player_card.speed, ai_card.speed)
             case "durability":
-                self.ui.stat_lb.setText("Durability")
+                
                 result = self.compare_stat(player_card.durability, ai_card.durability)
             case "power":
-                self.ui.stat_lb.setText("Power")
+                
                 result = self.compare_stat(player_card.power, ai_card.power)
             case "combat":
-                self.ui.stat_lb.setText("Combat")
+                
                 result = self.compare_stat(player_card.combat, ai_card.combat)            
         
         # respond to hand outcome
