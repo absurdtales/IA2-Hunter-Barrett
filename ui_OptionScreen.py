@@ -7,9 +7,10 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+import GameScreen
 
 
-class Ui_MainWindow(object):
+class Ui_OptionWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(645, 580)
@@ -129,10 +130,13 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def diffchange(self):
+        instance = GameScreen.MainWindow()
+        instance.difficulty = "easy"
+        
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -141,3 +145,4 @@ class Ui_MainWindow(object):
         self.medium_btn.setText(_translate("MainWindow", "Medium"))
         self.hard_btn.setText(_translate("MainWindow", "Hard"))
         self.back_btn.setText(_translate("MainWindow", "Go Back"))
+        self.easy_btn.clicked.connect(self.diffchange)

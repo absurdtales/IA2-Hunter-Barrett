@@ -1,9 +1,10 @@
 import sys
+from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtTest import QTest
-from ui_reworkedGame import Ui_MainWindow
-import ui_MainMenu
+import ui_reworkedGame
+from ui_MainMenu import Ui_MainMenuWindow
 from datastore import SuperheroDB
 from game import Card
 import random
@@ -16,7 +17,7 @@ class MainWindow:
     def __init__(self):
         # creating main window
         self.main_win = QMainWindow()
-        self.ui = Ui_MainWindow()
+        self.ui = ui_reworkedGame.Ui_MainWindow()
         self.ui.setupUi(self.main_win)
         
         # create database
@@ -36,7 +37,7 @@ class MainWindow:
         self.deal_hands()
         
         # game state variables
-        self.diffculty = "med"
+        self.difficulty = "med"
         self.reveal = False
         self.player_turn = True
                 
@@ -44,8 +45,14 @@ class MainWindow:
         self.update_display()
         
         self.signals()
-        
-        
+
+    def openMainMenuWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainMenuWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        self.main_win.close()
+
     def establish_poss_cards(self):
         """
         generates all cards with stats, then shuffles them
@@ -167,7 +174,7 @@ class MainWindow:
         AI chooses a stat from a range of options which is determine
         by the difficulty
         '''
-        match self.diffculty:
+        match self.difficulty:
             case "easy":
                 # choose stat from all stats
                 stats = self.ai_hand[0].stat_order
@@ -197,6 +204,7 @@ class MainWindow:
         self.ui.player_dura_btn.clicked.connect(lambda: self.compare("durability"))
         self.ui.player_pwr_btn.clicked.connect(lambda: self.compare("power"))
         self.ui.player_combat_btn.clicked.connect(lambda: self.compare("combat"))
+        self.ui.exit_btn.clicked.connect(self.openMainMenuWindow)
     
         
     # ----- slots ----- #

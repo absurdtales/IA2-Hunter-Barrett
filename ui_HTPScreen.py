@@ -7,9 +7,16 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+import ui_MainMenu
 
 
-class Ui_MainWindow(object):
+class Ui_HTPWindow(object):
+    def openMainMenuWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = ui_MainMenu.Ui_MainMenuWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(646, 487)
@@ -70,3 +77,4 @@ class Ui_MainWindow(object):
         self.back_btn.setText(_translate("MainWindow", "Go Back"))
         self.label_3.setText(_translate("MainWindow", "Then play the game, you will start out with 10 cards."))
         self.label_5.setText(_translate("MainWindow", "If your stat has a higher value, you win. If the AI\'s stat has a higher value you lose."))
+        self.back_btn.clicked.connect(self.openMainMenuWindow)
