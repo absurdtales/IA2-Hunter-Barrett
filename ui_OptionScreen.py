@@ -136,7 +136,13 @@ class Ui_OptionWindow(object):
     def diffchange(self):
         instance = GameScreen.MainWindow()
         instance.difficulty = "easy"
-        
+        if self.easy_btn.clicked():
+            instance.difficulty = "easy"
+        elif self.medium_btn.clicked():
+            instance.difficulty = "med"
+        elif self.hard_btn.clicked():
+            instance.difficulty = "hard"
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))

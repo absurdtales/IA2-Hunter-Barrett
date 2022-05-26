@@ -38,7 +38,7 @@ class MainWindow:
         self.deal_hands()
         
         # game state variables
-        self.difficulty = "med"
+        self.difficulty = Ui_OptionWindow.diffchange(self)
         self.reveal = False
         self.player_turn = True
                 
@@ -284,7 +284,6 @@ class MainWindow:
         # check for computer turn
         if not self.player_turn:
             self.ai_turn()
-               
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
