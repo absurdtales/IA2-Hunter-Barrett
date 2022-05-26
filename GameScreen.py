@@ -5,6 +5,7 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtTest import QTest
 import ui_reworkedGame
 from ui_MainMenu import Ui_MainMenuWindow
+from ui_OptionScreen import Ui_OptionWindow
 from datastore import SuperheroDB
 from game import Card
 import random
