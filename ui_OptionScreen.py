@@ -11,6 +11,9 @@ import GameScreen
 
 
 class Ui_OptionWindow(object):
+    def __init__(self):
+        self.difficulty = "easy"
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(645, 580)
@@ -133,16 +136,18 @@ class Ui_OptionWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def diffchange(self):
-        instance = GameScreen.MainWindow()
-        instance.difficulty = "easy"
-        if self.easy_btn.clicked():
-            instance.difficulty = "easy"
-        elif self.medium_btn.clicked():
-            instance.difficulty = "med"
-        elif self.hard_btn.clicked():
-            instance.difficulty = "hard"
-
+    def diffeasy(self):
+        self.difficulty = "easy"
+    
+    def diffmed(self):
+        self.difficulty = "med"
+    
+    def diffhard(self):
+        self.difficulty = "hard"
+    
+    def getdiff(self):
+        return self.difficulty
+    
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -151,4 +156,6 @@ class Ui_OptionWindow(object):
         self.medium_btn.setText(_translate("MainWindow", "Medium"))
         self.hard_btn.setText(_translate("MainWindow", "Hard"))
         self.back_btn.setText(_translate("MainWindow", "Go Back"))
-        self.easy_btn.clicked.connect(self.diffchange)
+        self.easy_btn.clicked.connect(self.diffeasy)
+        self.medium_btn.clicked.connect(self.diffmed)
+        self.hard_btn.clicked.connect(self.diffhard)

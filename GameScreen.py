@@ -5,7 +5,7 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtTest import QTest
 import ui_reworkedGame
 from ui_MainMenu import Ui_MainMenuWindow
-from ui_OptionScreen import Ui_OptionWindow
+import ui_OptionScreen
 from datastore import SuperheroDB
 from game import Card
 import random
@@ -15,7 +15,7 @@ class MainWindow:
     '''
     The control module
     '''
-    def __init__(self):
+    def __init__(self, difficulty):
         # creating main window
         self.main_win = QMainWindow()
         self.ui = ui_reworkedGame.Ui_MainWindow()
@@ -38,7 +38,8 @@ class MainWindow:
         self.deal_hands()
         
         # game state variables
-        self.difficulty = Ui_OptionWindow.diffchange(self)
+        self.difficulty = difficulty
+        print("the difficulty is set to: ", difficulty)
         self.reveal = False
         self.player_turn = True
                 
@@ -287,6 +288,6 @@ class MainWindow:
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    main_win = MainWindow()
+    main_win = MainWindow("med")
     main_win.show()
     sys.exit(app.exec())

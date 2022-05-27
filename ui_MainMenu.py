@@ -14,6 +14,8 @@ from ui_OptionScreen import Ui_OptionWindow
 
 
 class Ui_MainMenuWindow(object):
+    def __init__(self):
+        self.difficulty = "easy"
     def openHTPWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_HTPWindow()
@@ -162,7 +164,9 @@ class Ui_MainMenuWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
     def rungamewin(self):
-        main_window = GameScreen.MainWindow()
+        if hasattr(self, 'ui'):
+            self.difficulty = self.ui.getdiff()
+        main_window = GameScreen.MainWindow(self.difficulty)
         main_window.show()
         MainWindow.close()
 
