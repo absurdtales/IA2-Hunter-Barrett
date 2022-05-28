@@ -1,0 +1,37 @@
+from platform import win32_edition
+
+
+IF database exists:
+    connect.database
+    create_db()
+ELSE:
+    connect.database
+
+def create_db():
+    execute(
+        """
+        CREATE TABLE Superhero(
+            super_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            super_name TEXT NOT NULL,
+            super_intelli INTEGER,
+            super_stren INTEGER,
+            super_spd INTEGER,
+            super_dur INTEGER,
+            super_pow INTEGER,
+            super_comb INTEGER,
+            super_image TEXT NOT NULL
+            )
+        """)
+
+
+def compare():
+    if chosen_player_value > ai_value:
+        player_result = win
+        win_label.setText("Player wins!")
+    elif chosen_player_value < ai_value:
+        player_result = lose
+        win_label.setText("Player loses")
+    else:
+        player_result = draw
+        win_label.setText("Draw")
+
