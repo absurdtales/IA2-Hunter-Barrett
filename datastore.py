@@ -369,9 +369,10 @@ class SuperheroDB():
         self.cursor.execute(insert_with_param,(vals))
         self.conn.commit()
 
-class UserDB():
+class UserDB:
+
     def __init__(self):
-        self.file = "Users.db"
+        self.file = "Users.harry.db"
         self.connection = sqlite3.connect(self.file)
         self.cursor = self.connection.cursor()
         self.login = False
