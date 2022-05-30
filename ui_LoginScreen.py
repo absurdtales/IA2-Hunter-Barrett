@@ -7,9 +7,12 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+import sys
+
 
 
 class Ui_LoginWindow(object):
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(581, 578)
@@ -100,3 +103,11 @@ class Ui_LoginWindow(object):
         self.label_2.setText(_translate("MainWindow", "Username:"))
         self.label_3.setText(_translate("MainWindow", "Password:"))
         self.go_btn.setText(_translate("MainWindow", "Go!"))
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    Main_LoginWindow = QtWidgets.QMainWindow()
+    ui = Ui_LoginWindow()
+    ui.setupUi(Main_LoginWindow)
+    Main_LoginWindow.show()
+    sys.exit(app.exec())

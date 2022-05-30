@@ -91,15 +91,13 @@ class UserDB():
                            FROM Users
                            """
                            )
-                        user_ID = self.cursor.fetchone()[0] + 1
                         # add details to database
                         self.cursor.execute(
                            """
                            INSERT INTO Users
-                           VALUES (:ID, :name, :email, :password)
+                           VALUES (:name, :email, :password)
                            """,
                            {
-                               "ID": user_ID, 
                                "name": username,
                                "email": email,
                                "password": password
@@ -193,4 +191,7 @@ class UserDB():
                 "username": self.username
             }
         )
-UserDB.create_user('yeah', 'bruh', 'yeah', 'uhuh')
+
+UserDB = UserDB()
+
+UserDB.create_user(username="bruh", email="bruhh", password="nig")
