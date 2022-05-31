@@ -15,7 +15,7 @@ class MainWindow:
     '''
     The control module
     '''
-    def __init__(self, difficulty):
+    def __init__(self, difficulty, pack_size):
         # creating main window
         self.main_win = QMainWindow()
         self.ui = ui_reworkedGame.Ui_MainWindow()
@@ -28,7 +28,8 @@ class MainWindow:
         self.deck = self.establish_poss_cards()
         
         # create game pack
-        self.pack_size = 20
+        self.pack_size = pack_size
+        print("the player deck is set to: ", pack_size)
         self.pack = self.get_game_pack()
             
         # deal hands

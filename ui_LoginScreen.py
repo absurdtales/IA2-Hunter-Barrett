@@ -144,6 +144,8 @@ class Ui_LoginWindow(object):
         recentUsername = self.username_input.text()
         print()
         UserDB.create_user(self, username= recentUsername, password= recentPassword, email= recentEmail)
+    
+    
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

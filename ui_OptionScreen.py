@@ -13,6 +13,7 @@ import GameScreen
 class Ui_OptionWindow(object):
     def __init__(self):
         self.difficulty = "easy"
+        self.pack_size = 20
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -120,11 +121,27 @@ class Ui_OptionWindow(object):
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem6)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem7)
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_5.addWidget(self.label_2)
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setObjectName("lineEdit")
+        self.horizontalLayout_5.addWidget(self.lineEdit)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_5.addWidget(self.pushButton)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem8)
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout.addLayout(self.horizontalLayout_4)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout.addItem(spacerItem7)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout.addItem(spacerItem9)
         self.back_btn = QtWidgets.QPushButton(self.centralwidget)
         self.back_btn.setObjectName("back_btn")
         self.verticalLayout.addWidget(self.back_btn)
@@ -133,21 +150,28 @@ class Ui_OptionWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def diffeasy(self):
         self.difficulty = "easy"
-    
+        
     def diffmed(self):
         self.difficulty = "med"
-    
+
     def diffhard(self):
         self.difficulty = "hard"
     
     def getdiff(self):
         return self.difficulty
-    
+
+    def decksize(self):
+        self.pack_size = int(self.lineEdit.text())
+
+    def getdecksize(self):
+        return self.pack_size
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -155,7 +179,10 @@ class Ui_OptionWindow(object):
         self.easy_btn.setText(_translate("MainWindow", "Easy"))
         self.medium_btn.setText(_translate("MainWindow", "Medium"))
         self.hard_btn.setText(_translate("MainWindow", "Hard"))
+        self.label_2.setText(_translate("MainWindow", "Deck Size:"))
+        self.pushButton.setText(_translate("MainWindow", "Confirm"))
         self.back_btn.setText(_translate("MainWindow", "Go Back"))
         self.easy_btn.clicked.connect(self.diffeasy)
         self.medium_btn.clicked.connect(self.diffmed)
         self.hard_btn.clicked.connect(self.diffhard)
+        self.pushButton.clicked.connect(self.decksize)

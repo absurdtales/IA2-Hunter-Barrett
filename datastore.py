@@ -449,6 +449,8 @@ class UserDB:
                         return("account created")
 
     def user_login(self, username, password):
+        passwordCount = 0
+        usernameCount = 0
         """
         lets users login to their accounts
         
@@ -464,7 +466,7 @@ class UserDB:
             )
         results_name = self.cursor.fetchall()
         for record in results_name:
-            if record[0] == username:
+            if str(record[0]) == username:
                 #continues to check if the password is correct
                 self.cursor.execute(
                     """
@@ -476,16 +478,23 @@ class UserDB:
                         "username": username
                     }
                 )
-                result_passwod = self.cursor.fetchall()[0]
+                result_password = self.cursor.fetchall()[0]
                 
-                if result_passwod == password:
+                if result_password == password:
                     self.login = True
                     self.username = username
                     return("logged in")
                 else:
-                    return("incorrect password, please try agian")
+                    passwordCount = passwordCount + 1
             else:
-                return("username not found, please create an account then try logging in")
+                usernameCount = usernameCount + 1
+            
+            if passwordCount == len(results_name) or usernameCount == len(results_name):
+                self.login = False
+            else:
+                self.login = True
+                self.username = username
+                self.password = password
 
     def check_stats(self):
         user_match = 0
@@ -533,3 +542,11 @@ class UserDB:
                 "username": self.username
             }
         )
+
+uc = UserDB()
+UserDB()
+
+uc.user_login(username="absurdtales", password="burret@gmail.com")
+print(uc.login)
+print(uc.username)
+print(uc.password)

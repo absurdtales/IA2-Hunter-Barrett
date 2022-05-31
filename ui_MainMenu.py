@@ -16,6 +16,7 @@ from ui_LoginScreen import Ui_LoginWindow
 class Ui_MainMenuWindow(object):
     def __init__(self):
         self.difficulty = "easy"
+        self.pack_size = 20
     def openHTPWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_HTPWindow()
@@ -175,7 +176,8 @@ class Ui_MainMenuWindow(object):
     def rungamewin(self):
         if hasattr(self, 'ui'):
             self.difficulty = self.ui.getdiff()
-        main_window = GameScreen.MainWindow(self.difficulty)
+            self.pack_size = self.ui.getdecksize()
+        main_window = GameScreen.MainWindow(self.difficulty, self.pack_size)
         main_window.show()
         MainWindow.close()
 
