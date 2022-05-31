@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 import ui_MainMenu
+import sys
 
 
 class Ui_HTPWindow(object):
@@ -16,6 +17,7 @@ class Ui_HTPWindow(object):
         self.ui = ui_MainMenu.Ui_MainMenuWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        HTPWindow.close()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -78,3 +80,10 @@ class Ui_HTPWindow(object):
         self.label_3.setText(_translate("MainWindow", "Then play the game, you will start out with 10 cards."))
         self.label_5.setText(_translate("MainWindow", "If your stat has a higher value, you win. If the AI\'s stat has a higher value you lose."))
         self.back_btn.clicked.connect(self.openMainMenuWindow)
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    Ui_HTPWindow = QtWidgets.QMainWindow()
+    ui = Ui_HTPWindow()
+    ui.setupUi(ui)
+    sys.exit(app.exec())

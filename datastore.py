@@ -543,10 +543,3 @@ class UserDB:
             }
         )
 
-uc = UserDB()
-UserDB()
-
-uc.user_login(username="absurdtales", password="burret@gmail.com")
-print(uc.login)
-print(uc.username)
-print(uc.password)

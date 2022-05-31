@@ -72,7 +72,6 @@ class Ui_LoginWindow(object):
         self.username_input = QtWidgets.QLineEdit(self.centralwidget)
         self.username_input.setText("")
         self.username_input.setObjectName("username_input")
-        usernameDB = self.username_input.text()
         self.horizontalLayout.addWidget(self.username_input)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
@@ -87,7 +86,6 @@ class Ui_LoginWindow(object):
         self.password_input = QtWidgets.QLineEdit(self.centralwidget)
         self.password_input.setText("")
         self.password_input.setObjectName("password_input")
-        passwordDB = self.password_input.text()
         self.horizontalLayout_2.addWidget(self.password_input)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
@@ -101,7 +99,6 @@ class Ui_LoginWindow(object):
         self.horizontalLayout_5.addWidget(self.label_4)
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit.setObjectName("lineEdit")
-        emailDB = self.lineEdit.text()
         self.horizontalLayout_5.addWidget(self.lineEdit)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem6)
@@ -120,6 +117,7 @@ class Ui_LoginWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.register_btn.clicked.connect(lambda: self.registeruser())
+        self.login_btn.clicked.connect(lambda: self.loginuser())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -145,7 +143,14 @@ class Ui_LoginWindow(object):
         print()
         UserDB.create_user(self, username= recentUsername, password= recentPassword, email= recentEmail)
     
-    
+    def loginuser(self):
+        recentUsername = self.username_input.text()
+        recentPassword = self.password_input.text()
+        print()
+        UserDB.user_login(self, username= recentUsername, password = recentPassword)
+        print(recentUsername)
+        print(recentPassword)
+        print(UserDB.username)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
