@@ -149,6 +149,7 @@ class Ui_LoginWindow(object):
         UserDB.user_login(self, username= recentUsername, password = recentPassword)
         print(recentUsername)
         print(recentPassword)
+        
 
     print(uc.username)
     print(uc.login)

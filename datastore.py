@@ -485,7 +485,6 @@ class UserDB:
                     return("logged in")
                 else:
                     self.login = False
-                    print(self.login)
             
         if self.login == True:
             return self.login
