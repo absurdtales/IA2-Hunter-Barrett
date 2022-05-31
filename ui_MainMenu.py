@@ -12,6 +12,7 @@ import GameScreen
 from ui_HTPScreen import Ui_HTPWindow
 from ui_OptionScreen import Ui_OptionWindow
 from ui_LoginScreen import Ui_LoginWindow
+from bruh import Ui_BruhWindow
 
 
 class Ui_MainMenuWindow(object):
@@ -24,18 +25,22 @@ class Ui_MainMenuWindow(object):
         self.ui = Ui_HTPWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-        MainWindow.close()
     
     def openOptionWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_OptionWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-        MainWindow.close()
     
     def openLoginWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_LoginWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def openAccountWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_BruhWindow()
         self.ui.setupUi(self.window)
         self.window.show()
 
@@ -210,6 +215,7 @@ class Ui_MainMenuWindow(object):
         self.howtoplay_btn.clicked.connect(self.openHTPWindow)
         self.option_btn.clicked.connect(self.openOptionWindow)
         self.pushButton.clicked.connect(self.openLoginWindow)
+        self.acc_btn.clicked.connect(self.openAccountWindow)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

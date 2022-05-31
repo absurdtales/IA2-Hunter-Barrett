@@ -4,7 +4,6 @@ import os
 import csv
 import requests
 import shutil
-from bridgingfile import UI
 
 class SuperheroDB():
     
@@ -480,20 +479,17 @@ class UserDB:
                 )
                 result_password = self.cursor.fetchall()[0][0]
                 if result_password == password:
-                    self.login == True
+                    self.login = True
                     print(self.login)
                     self.username = username
-                    mm = UI()
-                    mm.login_update_lb.setText(username)
                     return("logged in")
                 else:
                     self.login = False
+                    print(self.login)
             
         if self.login == True:
-            print(self.login)
             return self.login
         else:
-            print(self.login)
             self.login = False
             return self.login
 
