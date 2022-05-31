@@ -9,7 +9,6 @@
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 import GameScreen
-from datastore import UserDB
 from ui_HTPScreen import Ui_HTPWindow
 from ui_OptionScreen import Ui_OptionWindow
 from ui_LoginScreen import Ui_LoginWindow
@@ -39,7 +38,6 @@ class Ui_MainMenuWindow(object):
         self.ui = Ui_LoginWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-        MainWindow.close()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

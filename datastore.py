@@ -1,8 +1,10 @@
 import sqlite3
+from PyQt6 import QtCore, QtGui, QtWidgets
 import os
 import csv
 import requests
 import shutil
+from bridgingfile import UI
 
 class SuperheroDB():
     
@@ -449,8 +451,6 @@ class UserDB:
                         return("account created")
 
     def user_login(self, username, password):
-        passwordCount = 0
-        usernameCount = 0
         """
         lets users login to their accounts
         
@@ -478,23 +478,24 @@ class UserDB:
                         "username": username
                     }
                 )
-                result_password = self.cursor.fetchall()[0]
-                
+                result_password = self.cursor.fetchall()[0][0]
                 if result_password == password:
-                    self.login = True
+                    self.login == True
+                    print(self.login)
                     self.username = username
+                    mm = UI()
+                    mm.login_update_lb.setText(username)
                     return("logged in")
                 else:
-                    passwordCount = passwordCount + 1
-            else:
-                usernameCount = usernameCount + 1
+                    self.login = False
             
-            if passwordCount == len(results_name) or usernameCount == len(results_name):
-                self.login = False
-            else:
-                self.login = True
-                self.username = username
-                self.password = password
+        if self.login == True:
+            print(self.login)
+            return self.login
+        else:
+            print(self.login)
+            self.login = False
+            return self.login
 
     def check_stats(self):
         user_match = 0
@@ -542,4 +543,3 @@ class UserDB:
                 "username": self.username
             }
         )
-
