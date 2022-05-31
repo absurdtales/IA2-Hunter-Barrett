@@ -1,6 +1,3 @@
-from platform import win32_edition
-
-
 IF database exists:
     connect.database
     create_db()
@@ -23,7 +20,6 @@ def create_db():
             )
         """)
 
-
 def compare():
     if chosen_player_value > ai_value:
         player_result = win
@@ -35,3 +31,43 @@ def compare():
         player_result = draw
         win_label.setText("Draw")
 
+def loginuser(username, email, password):
+    logged_in = False
+    execute(
+        """
+        SELECT username
+        FROM user
+        """
+    )
+    results_name = cursor.fetchall()
+    results_name = username
+
+    execute(
+        """
+        SELECT password
+        FROM user
+        """
+    )
+    results_pass = cursor.fetchall()
+    results_pass = password
+
+    if results_name AND results_pass IS IN user.db:
+        logged_in = True
+    else:
+        logged_in = False
+        print("User not found")
+
+def registeruser(username, email, password):
+    execute(
+        """
+        INSERT INTO user
+        VALUES (ID, name, email, password)
+        """,
+        {
+            "ID": user_id,
+            "name": username,
+            "email": email,
+            "password": password
+
+        }
+    )

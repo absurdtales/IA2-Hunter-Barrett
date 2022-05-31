@@ -43,6 +43,9 @@ class Ui_MainMenuWindow(object):
         self.ui = Ui_BruhWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+    
+    def exceptionbruh(self):
+        MainWindow.close()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -216,6 +219,7 @@ class Ui_MainMenuWindow(object):
         self.option_btn.clicked.connect(self.openOptionWindow)
         self.pushButton.clicked.connect(self.openLoginWindow)
         self.acc_btn.clicked.connect(self.openAccountWindow)
+        self.exit_btn.clicked.connect(self.exceptionbruh)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
