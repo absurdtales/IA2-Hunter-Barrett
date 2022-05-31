@@ -373,7 +373,7 @@ class SuperheroDB():
 class UserDB:
 
     def __init__(self):
-        self.file = "Users.harry.db"
+        self.file = "Users.h.db"
         self.connection = sqlite3.connect(self.file)
         self.cursor = self.connection.cursor()
         self.login = False
